@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -16,15 +16,21 @@ import { LanguageSwitcher } from '@/components/vault/language-switcher'
 import { useI18n } from '@/components/i18n-provider'
 
 export function TopBar({ onToggleSidebar }: { onToggleSidebar?: () => void }) {
-  const [search, setSearch] = useState('')
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const [search, setSearch] = useState(searchParams?.get('q') ?? '')
   const { data: session } = useSession()
   const { t } = useI18n()
 
+  useEffect(() => {
+    setSearch(searchParams?.get('q') ?? '')
+  }, [searchParams])
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
-    if (search.trim()) {
-      router.push(`/dashboard?search=${encodeURIComponent(search.trim())}`)
+    const q = search.trim()
+    if (q) {
+      router.push(`/search?q=${encodeURIComponent(q)}`)
     }
   }
 

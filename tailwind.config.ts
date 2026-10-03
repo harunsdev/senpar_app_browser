@@ -25,6 +25,18 @@ const config: Config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       colors: {
+        teal: {
+          50: 'hsl(182 65% 96%)',
+          100: 'hsl(182 64% 90%)',
+          200: 'hsl(182 63% 80%)',
+          300: 'hsl(182 62% 68%)',
+          400: 'hsl(182 62% 58%)',
+          500: 'hsl(182 62% 52%)',
+          600: '#30c5ca',
+          700: 'hsl(182 63% 40%)',
+          800: 'hsl(182 64% 32%)',
+          900: 'hsl(182 65% 26%)',
+        },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
