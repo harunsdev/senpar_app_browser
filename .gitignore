@@ -1,0 +1,21 @@
+# dependencies
+/node_modules
+.yarn/*
+.pnp.*
+
+# builds
+/.build
+/.next
+/out
+/dist
+/.deploy
+
+# env & secrets
+.env
+.env*.local
+
+# misc
+*.log
+.DS_Store
+tsconfig.tsbuildinfo
+next-env.d.ts
